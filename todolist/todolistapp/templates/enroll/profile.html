@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>User Profile</title>
+</head>
+<body>
+    <form action="" method="get" >
+        {% csrf_token %}
+        {{data.user}} <br>
+        {{data.posted_data}}<br>
+    
+    
+ {% comment %} <h1>Profile Page</h1> {% endcomment %}
+ {% comment %} <h3>Welcome {{name}}</h3>
+ 
+ {% if messages %}
+  {% for message in messages %}
+   <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+  {% endfor %}
+ {% endif %}
+ {{user_profile}} {% endcomment %}
+ <a href="{% url 'logout' %}">Logout</a> 
+</body>
+</html>

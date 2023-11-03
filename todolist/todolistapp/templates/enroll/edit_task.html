@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit task</title>
+    <!-- Add your CSS stylesheets here (if any) -->
+</head>
+<head>
+    {% load static %}
+
+    <!-- ... Other meta tags and title ... -->
+    <link rel="stylesheet" href="{% static 'css/create_task.css' %}">
+</head>
+
+<body>
+    <div id="app">
+        <h1>edit task</h1>
+        
+        <!-- Task update form -->
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Title field -->
+            <div>
+                <label for="id_title">Title:</label>
+                {{ form.title }}
+            </div>
+
+            <!-- Description field -->
+            <div>
+                <label for="id_description">Description:</label>
+                {{ form.description }}
+            </div>
+
+            <!-- Due Date field -->
+            <div>
+                <label for="completed">completed:</label>
+                {{ form.completed }}
+            </div>
+
+            <!-- Submit button -->
+            <div>
+                <button type="submit">update Task</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

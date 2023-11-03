@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task list</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list_tasks.css' %}"/> <!-- Load a CSS file from the 'static' directory -->
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>title</th>  <!-- Table column header for 'title' -->
+        <th>Description</th>  <!-- Table column header for 'Description' -->
+        <th>completed</th>  <!-- Table column header for 'completed' -->
+        <th>created_at</th>  <!-- Table column header for 'created_at' -->
+        <th>Edit/Delete</th>  <!-- Table column header for 'Edit' and 'Delete' links -->
+    </tr>  <!-- End of table row for column headers -->
+    </thead>
+
+    <tbody>
+        {% for task in tasks %}  <!-- Loop through 'tasks' and display each task in a table row -->
+        <tr>
+            <td>{{ task.title }}</td>  <!-- Display the 'title' of the task in this table cell -->
+            <td>{{ task.description }}</td>  <!-- Display the 'description' of the task in this table cell -->
+            <td>{{ task.completed }}</td>  <!-- Display the 'completed' status of the task in this table cell -->
+            <td>{{ task.created_at }}</td>  <!-- Display the 'created_at' timestamp of the task in this table cell -->
+            <td>
+                <a href="/edit/{{ task.id }}">Edit</a>  <!-- Create an 'Edit' link for this task with a URL to edit the task -->
+                <a href="/delete/{{ task.id }}">Delete</a>  <!-- Create a 'Delete' link for this task with a URL to delete the task -->
+            </td>  <!-- End of the cell containing 'Edit' and 'Delete' links -->
+        </tr>
+        {% endfor %}  <!-- End of the loop through tasks -->
+    </tbody>  <!-- End of the table body -->
+
+</table>  <!-- End of the table for listing tasks -->
+<br>
+<br>
+<center><a href="/create" class="create_task">Add New Record</a></center>  <!-- Create a link to create a new task record -->
+<br>
+<center><a href="{% url 'logout' %}">Logout</a></center>
+</body>
+</html>
